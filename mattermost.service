@@ -1,0 +1,17 @@
+[Unit]
+Description=Mattermost, an open source alternative to Slack
+After=network.target
+After=postgresql.service
+Requires=postgresql.service
+
+[Service]
+Type=simple
+ExecStart=/opt/mattermost/bin/platform
+Restart=always
+RestartSec=10
+WorkingDirectory=/opt/mattermost
+User=mattermost
+Group=mattermost
+
+[Install]
+WantedBy=multi-user.target
