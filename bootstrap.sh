@@ -52,6 +52,7 @@
   
   DEBIAN_FRONTEND=noninteractive apt-get install postgresql postgresql-contrib -yq
   echo "install libpq"
+  cp /vagrant_data/pg_hba.conf /etc/postgresql/11/main/pg_hba.conf   
   DEBIAN_FRONTEND=noninteractive apt-get install libpq-dev -yq
   echo "download mattermost package"
   wget --quiet -O mattermost-5.12.0-linux-amd64.tar.gz https://releases.mattermost.com/5.12.0/mattermost-5.12.0-linux-amd64.tar.gz
@@ -85,7 +86,7 @@
  
 
   #inttialize and  import  datafile
-  #creatdb dvdrental
+  createdb dvdrental -U postgres
 
   #sudo -u postgres pg_restore -d dvdrental /vagrant_data/dvdrental -c
 
